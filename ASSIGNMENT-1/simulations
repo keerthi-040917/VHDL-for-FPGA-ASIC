@@ -1,1 +1,37 @@
-Model Sim simulations
+#Model Sim simulation code
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Thermostat is
+    port (
+        desired_temp   : in  std_logic_vector(6 downto 0);
+        current_temp   : in  std_logic_vector(6 downto 0);
+        display_select : in  std_logic;
+        temp_display   : out std_logic_vector(6 downto 0)
+    );
+end Thermostat;
+
+architecture behav of Thermostat is
+begin
+    process(display_select, current_temp, desired_temp)
+    begin
+        if display_select = '1' then
+            temp_display <= current_temp;
+        else
+            temp_display <= desired_temp;
+        end if;
+    end process;
+end behav;
+
+     
+
+
+
+
+
+
+
+
+
+   
